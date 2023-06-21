@@ -6,6 +6,7 @@ import datetime
 from uuid import UUID
 import json
 import os
+import pycodestyle
 
 
 class test_basemodel(unittest.TestCase):
@@ -16,6 +17,16 @@ class test_basemodel(unittest.TestCase):
         super().__init__(*args, **kwargs)
         self.name = 'BaseModel'
         self.value = BaseModel
+    """
+    A class to test pep8 on base_model file"""
+    def test_pycodestyle(self):
+        """
+        Test pep8 format
+        """
+        pycostyle = pycodestyle.StyleGuide(quiet=True)
+        result = pycostyle.check_files(['models/base_model.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
 
     def setUp(self):
         """ """
@@ -75,10 +86,10 @@ class test_basemodel(unittest.TestCase):
             new = self.value(**n)
 
     # def test_kwargs_one(self):
-    #   """ """
-    #   n = {'Name': 'test'}
-    #   with self.assertRaises(KeyError):
-    #       new = self.value(**n)
+    #     """ """
+    #     n = {'Name': 'test'}
+    #     with self.assertRaises(KeyError):
+    #         new = self.value(**n)
 
     def test_id(self):
         """ """
@@ -98,9 +109,9 @@ class test_basemodel(unittest.TestCase):
         new = BaseModel(**n)
         self.assertFalse(new.created_at == new.updated_at)
 
-     def test_uuid(self):
+    def test_uuid(self):
         """
-        Testing UUID
+        Testin UUID
         """
         instance1 = BaseModel()
         instance2 = BaseModel()

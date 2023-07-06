@@ -8,8 +8,7 @@ mkdir -p /data/web_static/
 mkdir -p /data/web_static/releases/
 mkdir -p /data/web_static/shared/
 mkdir -p /data/web_static/releases/test/
-touch /data/web_static/releases/test/index.html
-printf %s "
+print %s "
 <html>
   <head>
   </head>
@@ -19,7 +18,7 @@ printf %s "
 </html>
 " > /data/web_static/releases/test/index.html
 
-sudo ln -sf /data/web_static/releases/test  /data/web_static/current
+ln -sf /data/web_static/releases/test  /data/web_static/current
 
 chown -R ubuntu:ubuntu /data/
 
@@ -48,4 +47,3 @@ printf %s "server {
 }" > /etc/nginx/sites-available/default
 
 sudo service nginx restart
-

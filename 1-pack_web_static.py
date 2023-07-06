@@ -2,9 +2,10 @@
 """Module for fabric script that generates a .tgz archive"""
 import os
 from datetime import datetime
-from fabric.api import local
+from fabric.api import local, runs_once
 
 
+@runs_once
 def do_pack():
     """function to generate a .tgz archive"""
     dt = datetime.utcnow()
@@ -23,5 +24,5 @@ def do_pack():
     if local(('tar -cvzf {} web_static').format(archv_path)).failed is True:
         return None
     size = os.stat(archv_path).st_size
-    print("web_static packed: {} -> {} Bytes".format(archv_path, size))
+    print("web_static packed: {} -> {}Bytes".format(archv_path, size))
     return archv_path

@@ -45,8 +45,7 @@ printf %s "server {
           root /var/www/html;
           internal;
         }
-}" > default
-
+}" > /etc/nginx/sites-available/default
 
 sudo service nginx restart
 

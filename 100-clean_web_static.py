@@ -13,7 +13,7 @@ def do_clean(number=0):
     for host, key_file in zip(env.hosts, env.key_filename):
         env.host_string = host
         env.key_filename = key_file
-        
+
     number = 1 if int(number) == 0 else int(number)
 
     archvs = sorted(os.listdir("versions"))

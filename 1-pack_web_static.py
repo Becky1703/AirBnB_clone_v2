@@ -16,11 +16,12 @@ def do_pack():
                     dt.hour,
                     dt.minute,
                     dt.second)
-
+    print("Packing web_static to {}".format(archv_path))
     if os.path.isdir('versions') is False:
         if local('mkdir -p versions').failed is True:
             return None
     if local(('tar -cvzf {} web_static').format(archv_path)).failed is True:
         return None
-
+    size = os.stat(archv_path).st_size
+    print("web_static packed: {} -> {} Bytes".format(archv_path, size))
     return archv_path

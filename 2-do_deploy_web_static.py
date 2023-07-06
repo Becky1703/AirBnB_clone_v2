@@ -12,7 +12,6 @@ env.hosts = ["100.25.118.189", "34.234.204.223"]
 env.key_filename = ["~/.ssh/id_rsa", "~/.ssh/id_rsa_new"]
 
 
-
 @runs_once
 def do_deploy(archive_path):
     """function deploys the archive to the web servers"""
@@ -24,7 +23,7 @@ def do_deploy(archive_path):
     for host, key_file in zip(env.hosts, env.key_filename):
         env.host_string = host
         env.key_filename = key_file
-        
+
         if put(archive_path, "/tmp/{}".format(archv_path)).failed is True:
             return False
         if run("rm -rf /data/web-static/releases/{}/".
@@ -48,5 +47,5 @@ def do_deploy(archive_path):
             return False
         if run("ln -s /data/web_static/releases/{}/ /data/web_static/current".
                format(name)).failed is True:
-           return False
+            return False
     return True

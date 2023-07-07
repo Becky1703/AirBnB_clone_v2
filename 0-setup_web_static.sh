@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #Bash script to set up a web server for deployment
-sudo apt -y update
-sudo apt install -y nginx
+sudo apt-get update
+sudo apt-get install -y nginx
 
 mkdir -p /data/
 mkdir -p /data/web_static/
@@ -23,8 +23,8 @@ ln -sf /data/web_static/releases/test  /data/web_static/current
 chown -R ubuntu:ubuntu /data/
 
 printf %s "server {
-        listen 80;
-        listen [::]:80;
+        listen 80 default_server;
+        listen [::]:80 default_server;
         add_header X-Served-By $HOSTNAME;
         
         root /var/www/html;
@@ -39,7 +39,7 @@ printf %s "server {
             index index.html index.htm;
         }
        
-        error_page 404 /custom_404.html;
+        error_page 404 /404.html;
         location /404 {
           root /var/www/html;
           internal;

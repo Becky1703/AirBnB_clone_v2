@@ -35,7 +35,6 @@ class FileStorage:
         if obj:
             key = "{}.{}".format(type(obj).__name__, obj.id)
             self.__objects[key] = obj
-        #self.all().update({obj.to_dict()['__class__'] + '.' + obj.id: obj})
 
     def save(self):
         """Saves storage dictionary to file"""
@@ -67,7 +66,7 @@ class FileStorage:
                     self.__objects[key] = value
         except FileNotFoundError:
             pass
-        
+
     def delete(self, obj=None):
         """Deletes obj from __objects"""
         if obj:

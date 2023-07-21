@@ -26,5 +26,13 @@ def c(text):
     return "C {}".format(text)
 
 
+@app.route('/python', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
+def python(text="is cool"):
+    """Displays Python and the value of text variable in the route"""
+    text = text.replace("_", " ")
+    return "Python {}".format(text)
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

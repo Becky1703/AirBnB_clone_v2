@@ -12,10 +12,12 @@ def hello_hbnb():
     name = request.args.get("name", "HBNB")
     return f'Hello {escape(name)}!'
 
+
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
     """Displays HBNB"""
     return 'HBNB'
+
 
 @app.route('/c/<text>', strict_slashes=False)
 def c(text):

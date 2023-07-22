@@ -4,8 +4,8 @@ from models.base_model import BaseModel, Base
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String
-#import models
-#from models.city import City
+import models
+from models.city import City
 import shlex
 from os import environ
 
@@ -18,9 +18,6 @@ class State(BaseModel, Base):
 
     @property
     def cities(self):
-        from models import storage
-        from models.city import City
-
         var = models.storage.all()
         lista = []
         result = []

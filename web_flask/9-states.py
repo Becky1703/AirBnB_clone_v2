@@ -14,6 +14,7 @@ def states():
     states = storage.all("State")
     return render_template("9-states.html", state=states)
 
+
 @app.route('/states/<id>', strict_slashes=False)
 def states_id(id):
     """Displays an HTML page containing information about id."""
@@ -21,6 +22,7 @@ def states_id(id):
         if state.id == id:
             return render_template("9-states.html", state=state)
     return render_template("9-states.html")
+
 
 @app.teardown_appcontext
 def teardown(exc):

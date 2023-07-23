@@ -8,14 +8,14 @@ from os import getenv
 import models
 
 place_amenity = Table("place_amenity", Base.metadata,
-                     Column("place_id", String(60),
+                     Column("place_id",
                             ForeignKey("places.id"),
                             primary_key=True,
                             nullable=False),
-                     Column("amenity_id", String(60),
+                     Column("amenity_id",
                             ForeignKey("amenities.id"),
-                            primary_key=True,
-                            nullable=False))
+                            primary_key=True, nullable=False),
+                      mysql_collate='latin1_swedish_ci')
 
 
 class Place(BaseModel, Base):
